@@ -1,1 +1,1 @@
-web: flask db init; flask db migrate; flask db migrate; flask populate-db; flask translate compile; gunicorn app.main:app
+web: flask db init; flask db migrate; flask db migrate; flask populate-db; flask translate compile; gunicorn main:app
