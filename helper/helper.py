@@ -12,6 +12,14 @@ def populate_tables():
     staff_list.append(StaffAdmin(staff_id='s3', input_password='password'))
     db.session.add_all(staff_list)
 
+    db.session.query(Category).delete()       # clear all existing rows
+    category_list = []
+    category_list.append(Category('Chicken', 0))
+    category_list.append(Category('Beef', 1))
+    category_list.append(Category('Drink', 2))
+    category_list.append(Category('Alcohol', 3))
+    db.session.add_all(category_list)
+
     db.session.query(MenuItem).delete()       # clear all existing rows
     menu_item_list = [] 
     menu_item_list.append(MenuItem('food1', 1, 10, 'delicious food', 'cheese, bacon', '/static/images/1.jpg', 10, 'selling', 0))
@@ -25,15 +33,6 @@ def populate_tables():
     menu_item_list.append(MenuItem('item7', 4, 10, 'delicious food', 'cheese, bacon', '/static/images/9.jpg', 10, 'selling', 3))
     menu_item_list.append(MenuItem('burger9', 4, 10, 'delicious food', 'cheese, bacon', '/static/images/9.jpg', 10, 'selling', 4))
     db.session.add_all(menu_item_list)
-
-    db.session.query(Category).delete()       # clear all existing rows
-    category_list = []
-    category_list.append(Category('Chicken', 0))
-    category_list.append(Category('Beef', 1))
-    category_list.append(Category('Drink', 2))
-    category_list.append(Category('Alcohol', 3))
-    db.session.add_all(category_list)
-
 
     # Add more records as needed
     db.session.commit()
